@@ -105,12 +105,23 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          command: 'am start -n com.oculus.vrshell/.MainActivity -d apk://com.oculus.browser -e uri www.youtube.com'
+          command: 'pm clear com.oculus.browser && am force-stop com.oculus.brow && shell am force-stop com.oculus.browser'
         })
       }).then(res => console.log("Sent browser command:", cmd));
     }
 
     function OpenBrowserProductivity(cmd) {
+
+      fetch('https://movieplay-zvp8.onrender.com/sendCommand', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          command: 'am start -n com.oculus.vrshell/.MainActivity -d apk://com.oculus.browser -e uri www.youtube.com'
+        })
+      }).then(res => console.log("Sent browser command:", cmd));
+
+
+
       fetch('https://movieplay-zvp8.onrender.com/sendCommand', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
